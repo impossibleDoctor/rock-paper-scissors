@@ -1,0 +1,81 @@
+@import url("https://fonts.googleapis.com/css2?family=Russo+One&display=swap");
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+    font-family: "Russo One", sans-serif;
+}
+
+.header {
+    display: flex;
+    background-color: black;
+    padding: 0px;
+    justify-content: center;
+}
+
+h1 {
+    font-family: "Russo One", sans-serif;
+    color: white;
+}
+
+.scoreboard {
+    display: flex;
+    margin-top: 10px;
+    justify-content: center;
+}
+
+.scoreboard .panel {
+    display: flex;
+    background-color: #29abe2;
+    border-bottom-left-radius: 10em;
+    border-bottom-right-radius: 10em;
+    justify-content: center;
+    align-items: center;
+    padding: 0 200px 0;
+    width: 1000px;
+}
+
+.player-score-container,
+.computer-score-container {
+    flex: 2;
+    display: flex;
+    width: auto;
+    align-items: center;
+}
+
+.computer-score-container {
+    flex-direction: row-reverse;
+}
+
+.round {
+    flex: 1;
+    text-align: center;
+    color: #00535f;
+    font-size: 20px;
+}
+
+h3 {
+    margin: 15px;
+    font-family: "Russo One", sans-serif;
+    font-size: 40px;
+}
+
+.scorecard {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 130px;
+    height: 150px;
+    border: 5px solid black;
+    border-radius: 30px;
+    background-color: white;
+    margin: -30px 0;
+
+    font-family: "Russo One", sans-serif;
+    font-size: 50px;
+    color: grey;
+    text-align: center;
+}
