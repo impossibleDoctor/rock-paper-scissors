@@ -10,59 +10,55 @@
 
     <style>
         /* * {
+            box-sizing: border-box;
             border: 1px solid red;
         } */
     </style>
-
 </head>
 
 <body>
+    <script src="app.js"></script>
+
     <div class="header">
-        <div class="scorecard-twin"></div>
-        <h1>ROCK PAPER SCISSORS</h1>
-        <div class="scorecard-twin"></div>
+        <h1>Rock-Paper-Scissors</h1>
     </div>
 
     <div class="scoreboard">
         <div class="panel">
-            <div class="player-score-container">
+
+            <div class="score-container player">
                 <div class="scorecard" id="player-score">0</div>
-                <h3>PLAYER</h3>
+                <span class="player-text">PLAYER</span>
             </div>
-
-            <div class="round">
-                <h2>ROUND <span id="round-no">1</span></h2>
-            </div>
-
-            <div class="computer-score-container">
+            <div class="round">ROUND <span id="round-number">0</span></div>
+            <div class="score-container computer">
                 <div class="scorecard" id="computer-score">0</div>
-                <h3>COMPUTER</h3>
+                <span class="player-text">COMPUTER</span>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="content">
+        <div class="play-area">
+            <div class="playcard" id="player-playcard">
+            </div>
+            <div class="vl"></div>
+            <div class="playcard" id="computer-playcard">
             </div>
         </div>
     </div>
 
-    <div class="play-container">
-        <div class="playcard">
-            <img src="" alt="">
-        </div>
-        <div class="vl"></div>
-        <div class="playcard">
-            <img src="" alt="">
-        </div>
-
+    <div class="action-area">
+        <button class="action" id="rock">ROCK</button>
+        <button class="action" id="paper">PAPER</button>
+        <button class="action" id="scissors">SCISSORS</button>
     </div>
-
-    <div class="rps">
-        <button>Rock</button>
-        <button>Paper</button>
-        <button>Scissors</button>
-    </div>
-
-    <button id="help-button">?</button>
 
     <div class="footer">
-        copyright &copy; <a href="">impossibleDoctor</a>
+        copyright &copy; <a href="https://github.com/impossibleDoctor/rock-paper-scissors">impossibleDoctor</a>
     </div>
+
 
 </body>
 

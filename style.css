@@ -3,79 +3,162 @@
 body {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    padding: 0;
+    justify-content: flex-start;
+    /* align-items: center; */
+    min-height: 100vh;
     margin: 0;
     font-family: "Russo One", sans-serif;
 }
 
+/* HEADER SECTION */
 .header {
-    display: flex;
+    height: auto;
     background-color: black;
-    padding: 0px;
+    display: flex;
     justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 
-h1 {
-    font-family: "Russo One", sans-serif;
+.header h1 {
     color: white;
+    font-size: 4.2vh;
+    text-transform: capitalize;
+    margin: 10px;
 }
 
+/* SCOREBOARD SECTION */
 .scoreboard {
     display: flex;
-    margin-top: 10px;
     justify-content: center;
+    margin-top: 5px;
 }
 
 .scoreboard .panel {
-    display: flex;
     background-color: #29abe2;
-    border-bottom-left-radius: 10em;
-    border-bottom-right-radius: 10em;
+    display: flex;
+    width: 1000px;
     justify-content: center;
     align-items: center;
-    padding: 0 200px 0;
-    width: 1000px;
+    padding: 10px 50px;
+    border-bottom-left-radius: 7em;
+    border-bottom-right-radius: 7em;
+    /* flex-shrink: 0; */
 }
 
-.player-score-container,
-.computer-score-container {
-    flex: 2;
+.score-container {
+    flex: 1 auto;
     display: flex;
-    width: auto;
     align-items: center;
+    align-content: center;
+    flex-wrap: wrap;
 }
 
-.computer-score-container {
+.score-container.player {
+    justify-content: start;
+}
+
+.score-container.computer {
     flex-direction: row-reverse;
+    justify-content: end;
+}
+
+.player-text {
+    font-size: calc(12px + 1.5vw);
+    text-align: center;
+    margin: 30px;
 }
 
 .round {
-    flex: 1;
-    text-align: center;
+    font-size: calc(12px + 2vw);
     color: #00535f;
-    font-size: 20px;
-}
-
-h3 {
-    margin: 15px;
-    font-family: "Russo One", sans-serif;
-    font-size: 40px;
+    text-align: center;
 }
 
 .scorecard {
+    margin: -30px 0 -20px;
+    width: 100px;
+    height: 120px;
     display: flex;
     justify-content: center;
     align-items: center;
-    min-width: 130px;
-    height: 150px;
+    font-size: 7vh;
     border: 5px solid black;
-    border-radius: 30px;
+    border-radius: 25px;
     background-color: white;
-    margin: -30px 0;
+}
 
+/* CONTENT SECTION */
+.content {
+    flex: 1;
+    padding: 10px 0px;
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+}
+
+.play-area {
+    display: flex;
+    justify-content: center;
+    gap: 4vw;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.playcard {
+    flex: 1;
+    /* width: 350px; */
+
+    background-color: rgb(197, 197, 197);
+    border: none;
+    border-radius: 3em;
+}
+
+.vl {
+    border-left: 2px solid gray;
+    height: 70%;
+    left: 50%;
+    margin-left: -3px;
+    top: 0;
+}
+
+/* BUTTONS AREA */
+.action-area {
+    display: flex;
+    justify-content: center;
+    gap: 0.5em 1em;
+    padding: 30px;
+    flex-wrap: wrap;
+}
+
+button.action {
     font-family: "Russo One", sans-serif;
-    font-size: 50px;
-    color: grey;
-    text-align: center;
+    background-color: black;
+    color: white;
+    font-size: medium;
+    padding: 10px 50px;
+    border: none;
+    border-radius: 10px;
+    width: 200px;
+    flex-shrink: 0;
+}
+
+button:hover.action {
+    background-color: yellow;
+    color: black;
+    font-weight: bold;
+}
+
+/* FOOTER SECTION */
+.footer {
+    display: flex;
+    justify-content: center;
+    background-color: #29abe2;
+    padding: 7px;
+}
+
+.footer a {
+    font-size: small;
+    text-decoration: none;
+    color: black;
 }
