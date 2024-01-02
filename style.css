@@ -132,14 +132,13 @@ main {
 }
 
 .result-popup {
-    margin: 10px;
     display: flex;
     align-self: center;
-    justify-content: center;
     align-items: center;
     font-size: medium;
     border-radius: 1em;
     padding: 10px 20px;
+    margin: 0;
 }
 
 #restart-button {
@@ -158,7 +157,7 @@ main {
     display: flex;
     justify-content: center;
     gap: 0.5em 1em;
-    padding: 30px;
+    padding: 10px 30px 30px;
     flex-wrap: wrap;
 }
 
