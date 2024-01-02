@@ -5,6 +5,8 @@ let roundNumber = 0;
 let playerScore = 0,
     computerScore = 0;
 
+let played = false;
+
 const roundDisplay = document.getElementById("round-number");
 const playerScoreDisplay = document.getElementById("player-score");
 const computerScoreDisplay = document.getElementById("computer-score");
@@ -111,13 +113,14 @@ function playRound(playerSelection, computerSelection) {
 
 function endGame() {
     enableButtons(false);
+    played = false;
 }
 
 // Event listeners
 
-function buttonActionAddEventListener(button, playerChoice) {
-    button.addEventListener("click", () => {
-        let playerSelection = playerChoice;
+document.querySelectorAll(".action-container > .action").forEach((element) => {
+    element.addEventListener("click", () => {
+        let playerSelection = element.id;
         let computerSelection = getComputerChoice();
 
         displayChoice(playerCard, playerSelection);
@@ -133,15 +136,30 @@ function buttonActionAddEventListener(button, playerChoice) {
             updateComputerScore(computerScore + 1);
         }
 
+        played = true;
+
         // End game
         if (playerScore === MAX_ROUND || computerScore === MAX_ROUND) {
             endGame();
         }
     });
-}
 
-buttonActionAddEventListener(rockButton, "ROCK");
-buttonActionAddEventListener(paperButton, "PAPER");
-buttonActionAddEventListener(scissorsButton, "SCISSORS");
+    element.addEventListener("mouseover", () => {
+        if (!element.disabled) {
+            displayChoice(playerCard, element.id);
+            playerCard.parentNode.style.backgroundColor = "#f0f0f0";
+            displayChoice(computerCard, "");
+            computerCard.parentNode.style.backgroundColor = "#f0f0f0";
+        }
+    });
+
+    element.addEventListener("mouseout", () => {
+        if (!element.disabled) {
+            if (!played) {
+                displayChoice(playerCard, "");
+            }
+        }
+    });
+});
 
 initGame();
