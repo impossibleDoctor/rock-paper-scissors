@@ -1,61 +1,74 @@
 @import url("https://fonts.googleapis.com/css2?family=Russo+One&display=swap");
 
+:root {
+    --primary-light: white;
+    --primary-dark: black;
+    --primary-blue: #29abe2;
+    --secondary-light: yellow;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
 body {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
-    /* align-items: center; */
     min-height: 100vh;
     margin: 0;
     font-family: "Russo One", sans-serif;
 }
 
 /* HEADER SECTION */
-.header {
-    height: auto;
-    background-color: black;
+header {
+    background-color: var(--primary-dark);
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
 }
 
-.header h1 {
-    color: white;
+header h1 {
+    color: var(--primary-light);
     font-size: 4.2vh;
     text-transform: capitalize;
     margin: 10px;
 }
 
-/* SCOREBOARD SECTION */
-.scoreboard {
+/* MAIN SECTION */
+main {
+    flex: 1;
     display: flex;
-    justify-content: center;
-    margin-top: 5px;
+    flex-direction: column;
 }
 
-.scoreboard .panel {
-    background-color: #29abe2;
+/* SCOREBOARD AREA */
+.scoreboard-section {
     display: flex;
-    width: 1000px;
     justify-content: center;
+}
+
+.scoreboard {
+    background-color: var(--primary-blue);
+    margin: 0px 50px;
+    width: 1000px;
+    padding: 10px;
+    display: flex;
+    justify-content: space-around;
     align-items: center;
-    padding: 10px 50px;
-    border-bottom-left-radius: 7em;
-    border-bottom-right-radius: 7em;
-    /* flex-shrink: 0; */
+    border-bottom-left-radius: 50px;
+    border-bottom-right-radius: 50px;
 }
 
 .score-container {
-    flex: 1 auto;
     display: flex;
-    align-items: center;
-    align-content: center;
     flex-wrap: wrap;
-}
-
-.score-container.player {
     justify-content: start;
+    align-items: center;
 }
 
 .score-container.computer {
@@ -64,66 +77,76 @@ body {
 }
 
 .player-text {
-    font-size: calc(12px + 1.5vw);
-    text-align: center;
-    margin: 30px;
-}
-
-.round {
-    font-size: calc(12px + 2vw);
-    color: #00535f;
-    text-align: center;
+    margin: 10px 5px;
+    font-size: 20px;
+    color: #2a5061;
 }
 
 .scorecard {
-    margin: -30px 0 -20px;
-    width: 100px;
-    height: 120px;
+    height: 90px;
+    width: 70px;
+    border: 4px solid black;
+    border-radius: 15px;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 7vh;
-    border: 5px solid black;
-    border-radius: 25px;
+    font-size: 50px;
     background-color: white;
+    margin: -30px 10px 0px;
 }
 
-/* CONTENT SECTION */
-.content {
-    flex: 1;
-    padding: 10px 0px;
-    display: flex;
-    justify-content: center;
-    /* align-items: center; */
+.round {
+    font-size: 30px;
+    text-align: center;
+    justify-self: center;
 }
 
-.play-area {
+/* PLAY-AREA */
+.play-area-container {
+    margin: 20px;
+    align-self: center;
+
+    flex: 1 1 auto;
     display: flex;
+    flex-wrap: wrap-reverse;
+
     justify-content: center;
-    gap: 4vw;
     align-items: center;
-    flex-wrap: wrap;
+    row-gap: 10px;
+    column-gap: 40px;
 }
 
 .playcard {
-    flex: 1;
-    /* width: 350px; */
-
-    background-color: rgb(197, 197, 197);
     border: none;
-    border-radius: 3em;
+    border-radius: 20px;
+    background-color: rgb(240, 240, 240);
+
+    width: 200px;
+    height: 200px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 150px;
 }
 
-.vl {
-    border-left: 2px solid gray;
-    height: 70%;
-    left: 50%;
-    margin-left: -3px;
-    top: 0;
+.result-popup {
+    margin: 10px;
+    display: flex;
+    align-self: center;
+    font-size: medium;
+    border-radius: 1em;
+    background-color: red;
+    padding: 10px 20px;
+}
+
+.result-popup > button {
+    margin: 0 10px;
 }
 
 /* BUTTONS AREA */
-.action-area {
+.action-container {
     display: flex;
     justify-content: center;
     gap: 0.5em 1em;
@@ -144,21 +167,50 @@ button.action {
 }
 
 button:hover.action {
-    background-color: yellow;
+    background-color: var(--secondary-light);
     color: black;
     font-weight: bold;
 }
 
+button:disabled.action {
+    background-color: rgb(236, 236, 236);
+    color: rgb(192, 192, 192);
+    font-weight: bold;
+}
+
 /* FOOTER SECTION */
-.footer {
+footer {
     display: flex;
     justify-content: center;
     background-color: #29abe2;
     padding: 7px;
 }
 
-.footer a {
+footer a {
     font-size: small;
     text-decoration: none;
     color: black;
+}
+
+/* MEDIA QUERIES */
+
+@media (max-width: 650px) {
+    .scoreboard {
+        margin: 0px;
+        padding: 0px 30px;
+        border-radius: 0px;
+    }
+
+    .scorecard {
+        margin: -10px 0px 5px;
+    }
+
+    .round {
+        font-size: 25px;
+    }
+
+    .player-text {
+        font-size: 15px;
+        margin-top: 0px;
+    }
 }

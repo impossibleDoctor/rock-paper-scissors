@@ -17,48 +17,57 @@
 </head>
 
 <body>
-    <script src="app.js"></script>
-
-    <div class="header">
+    <header>
         <h1>Rock-Paper-Scissors</h1>
-    </div>
+    </header>
 
-    <div class="scoreboard">
-        <div class="panel">
-
-            <div class="score-container player">
-                <div class="scorecard" id="player-score">0</div>
-                <span class="player-text">PLAYER</span>
+    <main>
+        <div class="scoreboard-section">
+            <div class="scoreboard">
+                <div class="score-container player">
+                    <div class="scorecard" id="player-score">0</div>
+                    <span class="player-text">PLAYER</span>
+                </div>
+                <div class="round">ROUND <span id="round-number">1</span></div>
+                <div class="score-container computer">
+                    <div class="scorecard" id="computer-score">0</div>
+                    <span class="player-text">COMPUTER</span>
+                </div>
             </div>
-            <div class="round">ROUND <span id="round-number">0</span></div>
-            <div class="score-container computer">
-                <div class="scorecard" id="computer-score">0</div>
-                <span class="player-text">COMPUTER</span>
+
+        </div>
+
+        <div class="result-popup" style="display: none;">
+            <p id="result-message">Just some random message here</p>
+            <button>PROCEED</button>
+        </div>
+
+        <div class="play-area-container">
+            <div class="playcard">
+                <p id="player-playcard"></p>
+            </div>
+            <div class="playcard">
+                <p id="computer-playcard"></p>
             </div>
         </div>
 
-    </div>
 
-    <div class="content">
-        <div class="play-area">
-            <div class="playcard" id="player-playcard">
-            </div>
-            <div class="vl"></div>
-            <div class="playcard" id="computer-playcard">
-            </div>
+        <div class="action-container">
+            <button class="action" id="rock">ROCK</button>
+            <button class="action" id="paper">PAPER</button>
+            <button class="action" id="scissors">SCISSORS</button>
         </div>
-    </div>
 
-    <div class="action-area">
-        <button class="action" id="rock">ROCK</button>
-        <button class="action" id="paper">PAPER</button>
-        <button class="action" id="scissors">SCISSORS</button>
-    </div>
+    </main>
 
-    <div class="footer">
-        copyright &copy; <a href="https://github.com/impossibleDoctor/rock-paper-scissors">impossibleDoctor</a>
-    </div>
+    <footer>
+        <p>
+            copyright &copy; 2024
+            <a href="https://github.com/impossibleDoctor/rock-paper-scissors">impossibleDoctor</a>
+        </p>
+    </footer>
 
+    <script src="app.js"></script>
 
 </body>
 
