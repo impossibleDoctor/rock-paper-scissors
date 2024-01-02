@@ -135,14 +135,22 @@ main {
     margin: 10px;
     display: flex;
     align-self: center;
+    justify-content: center;
+    align-items: center;
     font-size: medium;
     border-radius: 1em;
-    background-color: red;
     padding: 10px 20px;
 }
 
-.result-popup > button {
+#restart-button {
     margin: 0 10px;
+    background-color: var(--primary-dark);
+    color: var(--primary-light);
+    border-radius: 10px;
+    padding: 5px 10px;
+    font-family: "Russo One", sans-serif;
+    border: none;
+    cursor: pointer;
 }
 
 /* BUTTONS AREA */

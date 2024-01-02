@@ -1,5 +1,5 @@
 // GAME CONFIG
-const MAX_ROUND = 10;
+const MAX_ROUND = 5;
 
 let roundNumber = 0;
 let playerScore = 0,
@@ -17,6 +17,9 @@ const computerCard = document.getElementById("computer-playcard");
 const rockButton = document.getElementById("rock");
 const paperButton = document.getElementById("paper");
 const scissorsButton = document.querySelector("#scissors");
+
+const winnerPopup = document.querySelector(".result-popup");
+const restartButton = document.querySelector("#restart-button");
 
 // UI and Varible UPDATES
 function updateRound(number) {
@@ -80,6 +83,13 @@ function initGame() {
     updateComputerScore(0);
 
     enableButtons();
+    winnerPopup.style.visibility = "hidden";
+
+    displayChoice(playerCard, "");
+    displayChoice(computerCard, "");
+
+    playerCard.parentNode.style.backgroundColor = "#f0f0f0";
+    computerCard.parentNode.style.backgroundColor = "#f0f0f0";
 }
 
 function getComputerChoice() {
@@ -114,6 +124,18 @@ function playRound(playerSelection, computerSelection) {
 function endGame() {
     enableButtons(false);
     played = false;
+
+    let playerWon = playerScore > computerScore;
+    if (playerWon) {
+        document.getElementById("winner-message").innerHTML = "You won!";
+        document.querySelector(".result-popup").style.backgroundColor =
+            "lightgreen";
+    } else {
+        document.getElementById("winner-message").innerHTML = "You lost!";
+        document.querySelector(".result-popup").style.backgroundColor = "pink";
+    }
+
+    winnerPopup.style.visibility = "visible";
 }
 
 // Event listeners
@@ -161,5 +183,7 @@ document.querySelectorAll(".action-container > .action").forEach((element) => {
         }
     });
 });
+
+restartButton.addEventListener("click", initGame);
 
 initGame();
