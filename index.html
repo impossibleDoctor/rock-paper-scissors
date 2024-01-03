@@ -17,6 +17,8 @@
 </head>
 
 <body>
+    <script src="gameconfig.js"></script>
+
     <header>
         <h1>Rock-Paper-Scissors</h1>
     </header>
@@ -28,7 +30,11 @@
                     <div class="scorecard" id="player-score">0</div>
                     <span class="player-text">PLAYER</span>
                 </div>
-                <div class="round">ROUND <span id="round-number">1</span></div>
+                <div class="game-info">
+                    <div class="round">ROUND <span id="round-number">1</span></div>
+                    <p class="game-prompt"></p>
+                </div>
+
                 <div class="score-container computer">
                     <div class="scorecard" id="computer-score">0</div>
                     <span class="player-text">COMPUTER</span>
@@ -50,6 +56,7 @@
             <p id="winner-message">Just some random message here</p>
             <button id="restart-button">PLAY AGAIN</button>
         </div>
+
 
         <div class="action-container">
             <button class="action" id="rock">ROCK</button>

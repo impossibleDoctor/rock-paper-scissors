@@ -21,6 +21,9 @@ const scissorsButton = document.querySelector("#scissors");
 const winnerPopup = document.querySelector(".result-popup");
 const restartButton = document.querySelector("#restart-button");
 
+document.querySelector(".game-prompt").textContent =
+    "First to " + MAX_ROUND + " WINS!";
+
 // UI and Varible UPDATES
 function updateRound(number) {
     roundNumber = number;
