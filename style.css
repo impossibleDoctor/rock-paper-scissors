@@ -7,6 +7,10 @@
     --secondary-light: yellow;
 }
 
+* {
+    font-family: "Russo One", sans-serif;
+}
+
 *,
 *::before,
 *::after {
@@ -20,7 +24,6 @@ body {
     flex-direction: column;
     min-height: 100vh;
     margin: 0;
-    font-family: "Russo One", sans-serif;
 }
 
 /* HEADER SECTION */
@@ -112,7 +115,7 @@ main {
 /* PLAY-AREA */
 .play-area-container {
     flex: 1;
-    height: 100%
+    height: 100%;
     width: 100%;
     padding: 20px;
     display: flex;
@@ -139,11 +142,39 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
+
+    position: relative;
+    transform-style: preserve-3d;
+    transform-origin: center right;
+    transition: all 0.5s;
 }
 
+.playcard-face {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+    backface-visibility: hidden; /*hide element on back*/
+}
+
+.playcard-face--back {
+    border: none;
+    border-radius: 20px;
+
+    /*  rotated on start so the front is visible first */
+    transform: rotateY(180deg);
+}
+
+.playcard.is-flipped {
+    transform: translateX(-100%) rotateY(-180deg);
+}
 
 .result-popup {
-    display: flex;
+    /* display: none; */
     align-self: center;
     align-items: center;
     font-size: medium;
@@ -158,7 +189,6 @@ main {
     color: var(--primary-light);
     border-radius: 10px;
     padding: 5px 10px;
-    font-family: "Russo One", sans-serif;
     border: none;
     cursor: pointer;
 }
@@ -173,7 +203,6 @@ main {
 }
 
 button.action {
-    font-family: "Russo One", sans-serif;
     background-color: black;
     color: white;
     font-size: medium;
@@ -188,6 +217,7 @@ button:hover.action {
     background-color: var(--secondary-light);
     color: black;
     font-weight: bold;
+    cursor: pointer;
 }
 
 button:disabled.action {
@@ -234,13 +264,11 @@ footer a {
 
     .play-area-container {
         flex-direction: column-reverse;
-        justify-content: center;
         gap: 20px;
     }
 
     .playcard {
-        flex: 1;
-        max-height: 25vh;
+        flex: 1 1 10vh;
         font-size: 100px;
     }
 }

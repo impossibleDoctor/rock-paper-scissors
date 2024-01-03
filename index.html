@@ -17,8 +17,6 @@
 </head>
 
 <body>
-    <script src="gameconfig.js"></script>
-
     <header>
         <h1>Rock-Paper-Scissors</h1>
     </header>
@@ -48,11 +46,15 @@
                 <p id="player-playcard"></p>
             </div>
             <div class="playcard">
-                <p id="computer-playcard"></p>
+                <div class="playcard-face playcard-face--front"></div>
+                <div class="playcard-face playcard-face--back">
+                    <p id="computer-playcard"></p>
+                </div>
+
             </div>
         </div>
 
-        <div class="result-popup" style="display: hidden;">
+        <div class="result-popup">
             <p id="winner-message">Just some random message here</p>
             <button id="restart-button">PLAY AGAIN</button>
         </div>

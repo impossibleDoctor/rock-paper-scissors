@@ -5,7 +5,7 @@ let roundNumber = 0;
 let playerScore = 0,
     computerScore = 0;
 
-let played = false;
+let isFlipped = false;
 
 const roundDisplay = document.getElementById("round-number");
 const playerScoreDisplay = document.getElementById("player-score");
@@ -79,6 +79,31 @@ function showResult(result) {
     }
 }
 
+function hideComputerCard() {
+    if (isFlipped) {
+        computerCard.parentElement.parentElement.classList.toggle("is-flipped");
+        isFlipped = false;
+    }
+}
+
+function revealComputerCard(computerSelection) {
+    if (isFlipped) {
+        computerCard.parentElement.parentElement.classList.toggle("is-flipped");
+
+        setTimeout(function () {
+            displayChoice(computerCard, computerSelection);
+            computerCard.parentElement.parentElement.classList.toggle(
+                "is-flipped"
+            );
+            isFlipped = true;
+        }, 500);
+    } else {
+        displayChoice(computerCard, computerSelection);
+        computerCard.parentElement.parentElement.classList.toggle("is-flipped");
+        isFlipped = true;
+    }
+}
+
 // Game
 function initGame() {
     updateRound(1);
@@ -86,10 +111,11 @@ function initGame() {
     updateComputerScore(0);
 
     enableButtons();
-    winnerPopup.style.visibility = "hidden";
+    winnerPopup.style.display = "none";
 
     displayChoice(playerCard, "");
     displayChoice(computerCard, "");
+    hideComputerCard();
 
     playerCard.parentNode.style.backgroundColor = "#f0f0f0";
     computerCard.parentNode.style.backgroundColor = "#f0f0f0";
@@ -126,30 +152,33 @@ function playRound(playerSelection, computerSelection) {
 
 function endGame() {
     enableButtons(false);
-    played = false;
+    // isFlipped = false;
 
     let playerWon = playerScore > computerScore;
     if (playerWon) {
-        document.getElementById("winner-message").innerHTML = "You won!";
+        document.getElementById("winner-message").textContent = "You won!";
         document.querySelector(".result-popup").style.backgroundColor =
             "lightgreen";
     } else {
-        document.getElementById("winner-message").innerHTML = "You lost!";
+        document.getElementById("winner-message").textContent = "You lost!";
         document.querySelector(".result-popup").style.backgroundColor = "pink";
     }
 
-    winnerPopup.style.visibility = "visible";
+    winnerPopup.style.display = "flex";
 }
 
 // Event listeners
 
 document.querySelectorAll(".action-container > .action").forEach((element) => {
     element.addEventListener("click", () => {
+        console.log("start of click: " + isFlipped);
+
         let playerSelection = element.id;
         let computerSelection = getComputerChoice();
 
         displayChoice(playerCard, playerSelection);
-        displayChoice(computerCard, computerSelection);
+        revealComputerCard(computerSelection);
+        // displayChoice(computerCard, computerSelection);
 
         let result = playRound(playerSelection, computerSelection);
         showResult(result);
@@ -161,12 +190,12 @@ document.querySelectorAll(".action-container > .action").forEach((element) => {
             updateComputerScore(computerScore + 1);
         }
 
-        played = true;
-
         // End game
         if (playerScore === MAX_ROUND || computerScore === MAX_ROUND) {
             endGame();
         }
+
+        console.log("end of click: " + isFlipped);
     });
 
     element.addEventListener("mouseover", () => {
@@ -176,11 +205,18 @@ document.querySelectorAll(".action-container > .action").forEach((element) => {
             displayChoice(computerCard, "");
             computerCard.parentNode.style.backgroundColor = "#f0f0f0";
         }
+
+        if (isFlipped) {
+            computerCard.parentElement.parentElement.classList.toggle(
+                "is-flipped"
+            );
+            isFlipped = false;
+        }
     });
 
     element.addEventListener("mouseout", () => {
         if (!element.disabled) {
-            if (!played) {
+            if (!isFlipped) {
                 displayChoice(playerCard, "");
             }
         }
